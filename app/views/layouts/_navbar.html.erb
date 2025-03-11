@@ -1,0 +1,21 @@
+<nav class="bg-gray-100 shadow-md p-4 flex justify-between items-center">
+  <div class="text-xl font-bold text-gray-800">
+    <%= link_to "MyChatApp", authenticated_root_path, class: "hover:text-blue-500" %>
+  </div>
+
+  <div class="relative">
+    <input type="checkbox" id="dropdown-toggle" class="hidden peer">
+    
+    <label for="dropdown-toggle" class="flex items-center space-x-2 cursor-pointer">
+      <img src="<%= current_user.email || 'https://via.placeholder.com/40' %>"
+           alt="Profile Picture"
+           class="w-10 h-10 rounded-full border">
+      <span class="text-gray-700 font-medium"><%= current_user.name %></span>
+    </label>
+
+    <div class="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-md border hidden peer-checked:block">
+      <%= link_to "Profile", "user_path(current_user)", class: "block px-4 py-2 text-gray-700 hover:bg-gray-200" %>
+      <%= button_to "Logout", destroy_user_session_path, method: :delete, class: "block px-4 py-2 text-red-500 hover:bg-gray-200" %>
+    </div>
+  </div>
+</nav>
