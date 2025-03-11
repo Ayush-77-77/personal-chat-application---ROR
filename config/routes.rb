@@ -5,8 +5,8 @@ Rails.application.routes.draw do
     root to: "conversations#index", as: :authenticated_root
   end
 
-  unauthenticated do
-    root to: "devise/sessions#new", as: :unauthenticated_root
+  devise_scope :user do
+    root to: "devise/sessions#new"
   end
 
 
