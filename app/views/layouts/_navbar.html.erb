@@ -7,9 +7,7 @@
     <input type="checkbox" id="dropdown-toggle" class="hidden peer">
     
     <label for="dropdown-toggle" class="flex items-center space-x-2 cursor-pointer">
-      <img src="<%= current_user.email || 'https://via.placeholder.com/40' %>"
-           alt="Profile Picture"
-           class="w-10 h-10 rounded-full border">
+      <%=image_tag (current_user.avatar.presence || "default_profile_pic.jpg")  ,  alt: "Profile Picture", class:"w-10 h-10 rounded-full border"%>   
       <span class="text-gray-700 font-medium"><%= current_user.name %></span>
     </label>
 
