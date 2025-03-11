@@ -46,6 +46,11 @@
       </div>
     </div>
 
+     <div>
+        <%= f.label :profile_picture, class: "block text-sm font-medium text-gray-700" %>
+        <%= f.file_field :avatar, class: "mt-1 w-full p-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-300" %>
+     </div>
+
     <div class="mt-6 flex space-x-3">
       <%= f.submit "Update", class: "px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition" %>
       <%= link_to "Back", :back, class: "px-4 py-2 bg-gray-400 text-white rounded-md hover:bg-gray-500 transition" %>
