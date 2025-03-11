@@ -3,8 +3,15 @@ class MessagesController < ApplicationController
     @message = Message.new(message_params)
     @message.user = current_user
     @message.conversation_id = params[:conversation_id]
+    @conversation =  Conversation.find_by(id: params[:conversation_id])
     if @message.save
-      redirect_to conversation_path(@message.conversation_id)
+      ChatChannel.broadcast_to(
+        @conversation,
+        message: render_to_string(partial: "messages/message",
+        locals: { message: @message }),
+        sender_id: @message.user.id
+      )
+      head :ok
     else
       flash[:alert] = "something went wrong"
       redirect_to "conversations_path"

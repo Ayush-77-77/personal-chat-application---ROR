@@ -6,22 +6,7 @@
 
     <div class="flex-1 overflow-y-auto space-y-2">
       <% @conversations.each do |conversation| %>
-        <% other_user = conversation.sender == current_user ? conversation.receiver : conversation.sender %>
-        <% contact = current_user.contacts.find_by(phone_number: other_user.phone_number) %>
-
-        <a href="<%= conversation_path(conversation) %>" class="flex items-center p-3 hover:bg-gray-200 rounded-lg transition space-x-3">
-          <%= image_tag other_user.avatar.attached? ? other_user.avatar : "default_profile_pic.jpg", class: "w-10 h-10 rounded-full border" %>
-          
-          <div class="flex-grow">
-            <h3 class="text-md font-medium"><%= contact&.name || other_user.name %></h3>
-            <p class="text-sm text-gray-500 truncate">
-              <%= conversation.messages.last&.content.truncate(20) || "No messages yet" %>
-            </p>
-          </div>
-          <span class="text-xs text-gray-400">
-            <%= time_ago_in_words(conversation.messages.last&.created_at) if conversation.messages.last %>
-          </span>
-        </a>
+        <%= render "conversation", conversation: conversation%>
       <% end %>
     </div>
   </div>
@@ -38,13 +23,10 @@
         </h2>
       </div>
 
-      <div class="flex-1 p-4 overflow-y-auto space-y-3">
+      <div class="flex-1 p-4 overflow-y-auto space-y-3" data-controller="chat-subscription" data-chat-subscription-chat-id-value="<%= @conversation.id %>" 
+data-chat-subscription-current-user-id-value="<%= current_user.id %>" data-target="chat-subscription.chats"> 
         <% @messages.each do |message| %>
-          <div class="mb-3 flex <%= message.user == current_user ? 'justify-end' : 'justify-start' %>">
-            <div class="p-3 rounded-lg inline-block max-w-xs <%= message.user == current_user ? 'bg-blue-500 text-white' : 'bg-gray-200 text-black' %> break-words overflow-hidden">
-              <%= message.content %>
-            </div>
-          </div>
+          <%= render "/messages/message", message: message%>
         <% end %>
       </div>
 
