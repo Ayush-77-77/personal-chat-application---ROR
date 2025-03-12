@@ -9,13 +9,11 @@ Rails.application.routes.draw do
     root to: "devise/sessions#new"
   end
 
-
-
   resources :conversations, only: [ :index, :show ] do
-    resources :messages, only: [ :create ] # Nested under conversations
+    resources :messages, only: [ :create ]
   end
 
-
+  resources :contacts, except: [ :show ]
 
 
 

@@ -1,0 +1,21 @@
+<div class="flex justify-center items-center min-h-[calc(100vh-10rem)] pt-4 bg-gray-100">
+  <div class="bg-white p-6 rounded-lg shadow-lg w-80">
+    <h2 class="text-lg font-semibold text-gray-700 mb-4 text-center">Add Contact</h2>
+    
+    <%= form_with model: @contact, local: true, class: "space-y-4" do |f| %>
+      <div>
+        <%= f.label :name, "Name", class: "text-gray-600 block mb-1" %>
+        <%= f.text_field :name, class: "w-full border-b-2 border-gray-300 focus:border-blue-500 outline-none p-1" %>
+      </div>
+
+      <div>
+        <%= f.label :phone_number, "Phone Number", class: "text-gray-600 block mb-1" %>
+        <%= f.telephone_field :phone_number, class: "w-full border-b-2 border-gray-300 focus:border-blue-500 outline-none p-1" %>
+      </div>
+
+      <div class="flex justify-center">
+        <%= f.submit "Save", class: "bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition" %>
+      </div>
+    <% end %>
+  </div>
+</div>
