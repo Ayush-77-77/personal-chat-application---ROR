@@ -1,0 +1,28 @@
+<div class="max-w-2xl mx-auto mt-6 bg-white shadow-lg rounded-lg p-6">
+  <h2 class="text-2xl font-semibold text-gray-800 mb-4">Contacts</h2>
+
+  <input type="text" placeholder="Search contacts..." class="w-full p-2 border-b focus:outline-none focus:border-blue-500 mb-4">
+
+  <div class="divide-y">
+    <% @contacts.each do |contact| %>
+      <% user = User.find_by(phone_number: contact.phone_number) %>
+      
+      <div class="flex justify-between items-center py-3">
+        <div class="flex items-center space-x-3">
+          <%= image_tag (user && user.avatar.attached?) ? user.avatar : "default_profile_pic.jpg",class: "w-10 h-10 rounded-full border" %>
+          <div>
+            <h3 class="text-lg font-medium"><%= contact.name %></h3>
+            <p class="text-sm text-gray-500"><%= contact.phone_number %></p>
+          </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <% if user %>
+          <%= link_to "Chat", conversation_path(user), class: "bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition" %>
+        <% else %>
+          <%= link_to "Invite", "#", class: "bg-gray-300 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-400 transition" %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
