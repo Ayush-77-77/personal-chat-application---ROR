@@ -28,6 +28,7 @@ export default class extends Controller {
     this.chatsTarget.insertAdjacentHTML("beforeend", messageElement);
     // Scroll to the bottom of the messages container to show the latest message
     this.chatsTarget.scrollTo(0, this.chatsTarget.scrollHeight);
+    document.querySelector("#message_content").value = ""
   }
   // Function to build the HTML element for a message
   buildMessageElement(currentUserIsSender, message) {
