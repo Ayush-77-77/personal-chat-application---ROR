@@ -6,8 +6,10 @@
 
     <div class="flex-1 overflow-y-auto space-y-2">
       <% @conversations.each do |conversation| %>
+      <%unless conversation.messages.empty?%>
         <%= render "conversation", conversation: conversation%>
       <% end %>
+      <%end%>
     </div>
   </div>
 

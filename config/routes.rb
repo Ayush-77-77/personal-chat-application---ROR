@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     root to: "devise/sessions#new"
   end
 
-  resources :conversations, only: [ :index, :show ] do
+  resources :conversations, only: [ :index, :show, :create ] do
     resources :messages, only: [ :create ]
   end
 

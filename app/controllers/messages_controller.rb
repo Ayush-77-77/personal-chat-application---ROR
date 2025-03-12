@@ -11,10 +11,10 @@ class MessagesController < ApplicationController
         locals: { message: @message }),
         sender_id: @message.user.id
       )
-      head :ok
+      redirect_to conversation_path(@conversation) and return
     else
       flash[:alert] = "something went wrong"
-      redirect_to "conversations_path"
+      redirect_to conversations_path
     end
   end
 
