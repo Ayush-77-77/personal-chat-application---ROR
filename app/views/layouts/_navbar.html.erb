@@ -1,25 +1,34 @@
-<nav class="bg-gray-100 shadow-md p-4 flex justify-between items-center">
-  <div class="text-xl font-bold text-gray-800">
-    <%= link_to "MyChatApp", authenticated_root_path, class: "hover:text-blue-500" %>
+<nav class="bg-purple-700 shadow-md p-4 flex justify-between items-center px-8">
+  <div class="text-xl font-bold text-white">
+    <%= link_to "MyChatApp", authenticated_root_path %>
   </div>
 
-  <div class="relative">
+  <div class="relative flex items-center space-x-3">
     <input type="checkbox" id="dropdown-toggle" class="hidden peer">
-    
-    <label for="dropdown-toggle" class="flex items-center space-x-2 cursor-pointer">
-      <%=image_tag (current_user.avatar.presence || "default_profile_pic.jpg")  ,  alt: "Profile Picture", class:"w-10 h-10 rounded-full border"%>   
-      <span class="text-gray-700 font-medium"><%= current_user.name %></span>
-    </label>
 
-    <div class="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-md border hidden peer-checked:block">
-      <%= link_to "Add new contact", new_contact_path, class: "block px-4 py-2 text-gray-700 hover:bg-gray-200" %>
-      <%= link_to "Contact List", contacts_path(current_user), class: "block px-4 py-2 text-gray-700 hover:bg-gray-200" %>
-      <%= link_to "Profile", "user_path(current_user)", class: "block px-4 py-2 text-gray-700 hover:bg-gray-200" %>
-      <%= link_to "Edit Profile", edit_user_registration_path, class: "block px-4 py-2 text-gray-700 hover:bg-gray-200" %>
-     <%= button_to "Logout", destroy_user_session_path, method: :delete, 
-    class: "block w-full text-left px-4 py-2 text-red-500 hover:bg-gray-200 bg-white" %>
+    <label for="dropdown-toggle" class="flex items-center space-x-2 cursor-pointer text-white">
+        <%= image_tag (current_user.avatar.presence || "default_profile_pic.jpg"),  
+          alt: "Profile Picture", class: "w-10 h-10 rounded-full border border-white" %>   
+        <span class="font-medium"><%= current_user.name %></span>
 
+    <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown" 
+      class="text-white font-medium rounded-lg text-sm px-3 py-2 text-center inline-flex items-center">
+      <svg class="w-3 h-3 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+      </svg>
+    </button>
 
+    <div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-44 dark:bg-gray-700">
+      <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
+        <%= link_to "Add Contact", new_contact_path, class: "block px-5 py-3 text-gray-700 hover:bg-gray-100 transition" %>
+        <%= link_to "Contacts", contacts_path, class: "block px-5 py-3 text-gray-700 hover:bg-gray-100 transition" %>
+        <%= link_to "Profile", "user_path(current_user)", class: "block px-5 py-3 text-gray-700 hover:bg-gray-100 transition" %>
+        <%= link_to "Edit Profile", edit_user_registration_path, class: "block px-5 py-3 text-gray-700 hover:bg-gray-100 transition" %>
+        <div class="border-t"></div>
+        <%= button_to "Logout", destroy_user_session_path, method: :delete, 
+          class: "block w-full text-left px-5 py-3 text-red-500 hover:bg-gray-100 transition bg-white" %>
+      </ul>
     </div>
+
   </div>
 </nav>

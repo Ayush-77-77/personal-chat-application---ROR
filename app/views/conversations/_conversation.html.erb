@@ -1,19 +1,19 @@
 
 
-        <% other_user = conversation.sender == current_user ? conversation.receiver : conversation.sender %>
-        <% contact = current_user.contacts.find_by(phone_number: other_user.phone_number) %>
+  <% other_user = conversation.sender == current_user ? conversation.receiver : conversation.sender %>
+  <% contact = current_user.contacts.find_by(phone_number: other_user.phone_number) %>
 
-        <a href="<%= conversation_path(conversation) %>" class="flex items-center p-3 hover:bg-gray-200 rounded-lg transition space-x-3">
-          <%= image_tag other_user.avatar.attached? ? other_user.avatar : "default_profile_pic.jpg", class: "w-10 h-10 rounded-full border" %>
-          
-          <div class="flex-grow">
-            <h3 class="text-md font-medium"><%= contact&.name || other_user.name %></h3>
-            <p class="text-sm text-gray-500 truncate">
-              <%= conversation.messages.last&.content&.truncate(20) || "No messages yet" %>
-            </p>
-          </div>
-          <span class="text-xs text-gray-400">
-            <%= time_ago_in_words(conversation.messages.last&.created_at) if conversation.messages.last %>
-          </span>
-        </a>
+  <a href="<%= conversation_path(conversation) %>" class="flex items-center p-3 hover:bg-gray-200 rounded-lg transition space-x-3">
+    <%= image_tag other_user.avatar.attached? ? other_user.avatar : "default_profile_pic.jpg", class: "w-10 h-10 rounded-full border" %>
+    
+    <div class="flex-grow">
+      <h3 class="text-md font-medium"><%= contact&.name || other_user.name %></h3>
+      <p class="text-sm text-gray-700 truncate">
+        <%= conversation.messages.last&.content&.truncate(20) || "No messages yet" %>
+      </p>
+    </div>
+    <span class="text-xs text-black-400">
+      <%= time_ago_in_words(conversation.messages.last&.created_at) if conversation.messages.last %>
+    </span>
+  </a>
 

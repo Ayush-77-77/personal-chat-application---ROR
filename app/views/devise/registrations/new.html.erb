@@ -7,16 +7,16 @@
 
       <div>
         <%= f.label :name, class: "block text-sm font-medium text-gray-700" %>
-        <%= f.text_field :name, autofocus: true, class: "mt-1 w-full p-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-300" %>
+        <%= f.text_field :name, autofocus: true, class: "mt-1 w-full p-2 border border-gray-300 rounded-lg focus:ring focus:ring-purple-300" %>
       </div>
       <div>
         <%= f.label :phone_number, class: "block text-sm font-medium text-gray-700" %>
-        <%= f.text_field :phone_number, class: "mt-1 w-full p-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-300" %>
+        <%= f.text_field :phone_number, class: "mt-1 w-full p-2 border border-gray-300 rounded-lg focus:ring focus:ring-purple-300" %>
       </div>
       
       <div>
         <%= f.label :email, class: "block text-sm font-medium text-gray-700" %>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "mt-1 w-full p-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-300" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "mt-1 w-full p-2 border border-gray-300 rounded-lg focus:ring focus:ring-purple-300" %>
       </div>
 
       <div>
@@ -24,21 +24,21 @@
         <% if @minimum_password_length %>
           <em class="text-xs text-gray-500">(<%= @minimum_password_length %> characters minimum)</em>
         <% end %>
-        <%= f.password_field :password, autocomplete: "new-password", class: "mt-1 w-full p-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-300" %>
+        <%= f.password_field :password, autocomplete: "new-password", class: "mt-1 w-full p-2 border border-gray-300 rounded-lg focus:ring focus:ring-purple-300" %>
       </div>
 
       <div>
         <%= f.label :password_confirmation, class: "block text-sm font-medium text-gray-700" %>
-        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "mt-1 w-full p-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-300" %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "mt-1 w-full p-2 border border-gray-300 rounded-lg focus:ring focus:ring-purple-300" %>
       </div>
 
        <div>
         <%= f.label :profile_picture, class: "block text-sm font-medium text-gray-700" %>
-        <%= f.file_field :avatar, class: "mt-1 w-full p-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-300" %>
+        <%= f.file_field :avatar, class: "mt-1 w-full p-2 border border-gray-300 rounded-lg focus:ring focus:ring-purple-300" %>
       </div>
 
       <div>
-        <%= f.submit "Sign up", class: "w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition" %>
+        <%= f.submit "Sign up", class: "w-full bg-purple-600 text-white py-2 px-4 rounded-lg hover:bg-purple-700 transition" %>
       </div>
     <% end %>
 

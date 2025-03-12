@@ -5,16 +5,16 @@
     <%= form_with model: @contact, local: true, class: "space-y-4" do |f| %>
       <div>
         <%= f.label :name, "Name", class: "text-gray-600 block mb-1" %>
-        <%= f.text_field :name, class: "w-full border-b-2 border-gray-300 focus:border-blue-500 outline-none p-1" %>
+        <%= f.text_field :name, class: "w-full border-b-2 border-gray-300 focus:border-purple-500 outline-none p-1" %>
       </div>
 
       <div>
         <%= f.label :phone_number, "Phone Number", class: "text-gray-600 block mb-1" %>
-        <%= f.telephone_field :phone_number, class: "w-full border-b-2 border-gray-300 focus:border-blue-500 outline-none p-1" %>
+        <%= f.telephone_field :phone_number, class: "w-full border-b-2 border-gray-300 focus:border-purple-500 outline-none p-1" %>
       </div>
 
       <div class="flex justify-center">
-        <%= f.submit "Save", class: "bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition" %>
+        <%= f.submit "Save", class: "bg-purple-500 text-white px-4 py-2 rounded-lg hover:bg-purple-600 transition" %>
       </div>
     <% end %>
   </div>

@@ -7,15 +7,15 @@
     <div class="mt-4 space-y-3">
        <div>
         <%= f.label :name, class: "block text-sm font-medium text-gray-700" %>
-        <%= f.text_field :name, autofocus: true, class: "mt-1 w-full p-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-300" %>
+        <%= f.text_field :name, autofocus: true, class: "mt-1 w-full p-2 border border-gray-300 rounded-lg focus:ring focus:ring-purple-300" %>
       </div>
        <div>
         <%= f.label :phone_number, class: "block text-sm font-medium text-gray-700" %>
-        <%= f.text_field :phone_number, class: "mt-1 w-full p-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-300" %>
+        <%= f.text_field :phone_number, class: "mt-1 w-full p-2 border border-gray-300 rounded-lg focus:ring focus:ring-purple-300" %>
       </div>
       <div>
         <%= f.label :email, class: "block text-gray-600 font-medium" %>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "w-full mt-1 px-3 py-2 border rounded-md focus:outline-none focus:ring focus:ring-blue-300" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "w-full mt-1 px-3 py-2 border rounded-md focus:outline-none focus:ring focus:ring-purple-300" %>
       </div>
 
       <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -26,7 +26,7 @@
       <div>
         <%= f.label :password, class: "block text-gray-600 font-medium" %> 
         <span class="text-sm text-gray-500">(Leave blank if you don't want to change it)</span>
-        <%= f.password_field :password, autocomplete: "new-password", class: "w-full mt-1 px-3 py-2 border rounded-md focus:outline-none focus:ring focus:ring-blue-300" %>
+        <%= f.password_field :password, autocomplete: "new-password", class: "w-full mt-1 px-3 py-2 border rounded-md focus:outline-none focus:ring focus:ring-purple-300" %>
         <% if @minimum_password_length %>
           <small class="text-gray-500"><%= @minimum_password_length %> characters minimum</small>
         <% end %>
@@ -35,24 +35,24 @@
       <!-- Password Confirmation -->
       <div>
         <%= f.label :password_confirmation, class: "block text-gray-600 font-medium" %>
-        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "w-full mt-1 px-3 py-2 border rounded-md focus:outline-none focus:ring focus:ring-blue-300" %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "w-full mt-1 px-3 py-2 border rounded-md focus:outline-none focus:ring focus:ring-purple-300" %>
       </div>
 
       <!-- Current Password -->
       <div>
         <%= f.label :current_password, class: "block text-gray-600 font-medium" %> 
         <span class="text-sm text-gray-500">(We need your current password to confirm changes)</span>
-        <%= f.password_field :current_password, autocomplete: "current-password", class: "w-full mt-1 px-3 py-2 border rounded-md focus:outline-none focus:ring focus:ring-blue-300" %>
+        <%= f.password_field :current_password, autocomplete: "current-password", class: "w-full mt-1 px-3 py-2 border rounded-md focus:outline-none focus:ring focus:ring-purple-300" %>
       </div>
     </div>
 
      <div>
         <%= f.label :profile_picture, class: "block text-sm font-medium text-gray-700" %>
-        <%= f.file_field :avatar, class: "mt-1 w-full p-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-300" %>
+        <%= f.file_field :avatar, class: "mt-1 w-full p-2 border border-gray-300 rounded-lg focus:ring focus:ring-purple-300" %>
      </div>
 
     <div class="mt-6 flex space-x-3">
-      <%= f.submit "Update", class: "px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition" %>
+      <%= f.submit "Update", class: "px-4 py-2 bg-purple-500 text-white rounded-md hover:bg-purple-600 transition" %>
       <%= link_to "Back", :back, class: "px-4 py-2 bg-gray-400 text-white rounded-md hover:bg-gray-500 transition" %>
     </div>
   <% end %>
