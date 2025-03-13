@@ -1,0 +1,7 @@
+<div class="mt-4 text-center">
+        <%= image_tag other_user.avatar.attached? ? other_user.avatar : "default_profile_pic.jpg", class: "w-20 h-20 rounded-full mx-auto border" %>
+
+        <h3 class="text-lg font-medium mt-2"><%= contact&.name || other_user.name %></h3>
+        <p class="text-sm text-gray-500"><%= other_user.phone_number %></p>
+      </div>
+   

@@ -2,7 +2,7 @@
   <div class="w-1/4 bg-purple p-4 shadow-lg flex flex-col">
     <h2 class="text-xl font-semibold mb-4">Chats</h2>
 
-   <%= form_with url: "/conversations", method: :get, class: "relative w-full mb-4" do |form| %>
+<%= form_with url: "/conversations", method: :get, class: "relative w-full mb-4" do |form| %>
       <div class="flex items-center border rounded-full px-3 py-1 bg-white shadow-sm focus-within:ring-2 focus-within:ring-blue-400">
         <%= form.search_field :query, placeholder: "Search Name",
           class: "w-full outline-none border-none bg-transparent text-gray-700 placeholder-gray-400 text-sm py-1 focus:ring-0",
@@ -13,11 +13,7 @@
           </svg>
         </button>
       </div>
-  <% end %>
-
-
-
-
+<% end %>
     
     <div class="flex-1 overflow-y-auto space-y-2">
       <% @conversations.each do |conversation| %>
@@ -30,13 +26,13 @@
 
   <div class="w-2/4 flex flex-col shadow-lg h-full bg-purple">
     <% if @conversation %>
-      <div class="p-4 border-b flex items-center space-x-3">
         <% other_user = @conversation.sender == current_user ? @conversation.receiver : @conversation.sender %>
+        <% contact = current_user.contacts.find_by(phone_number: other_user.phone_number) %>
 
+      <div class="p-4 border-b flex items-center space-x-3">
         <%= image_tag other_user.avatar.attached? ? other_user.avatar : "default_profile_pic.jpg", class: "w-10 h-10 rounded-full border" %>
-
         <h2 class="text-lg font-semibold">
-          <%= other_user.name %>
+          <%= contact&.name || other_user.phone_number %>
         </h2>
       </div>
 
@@ -53,23 +49,19 @@ data-chat-subscription-current-user-id-value="<%= current_user.id %>" data-targe
           <%= f.submit "Send", class: "bg-purple-500 text-white px-5 py-2 rounded-full hover:bg-purple-600 transition" %>
         <% end %>
       </div>
+
     <% else %>
       <div class="flex items-center justify-center h-full text-gray-400">
         Select a chat to start messaging
       </div>
     <% end %>
+
   </div>
 
   <div class="w-1/4 bg-purple p-4 shadow-lg flex flex-col">
     <h2 class="text-lg font-semibold">User Info</h2>
     <% if @conversation %>
-      <% other_user = @conversation.sender == current_user ? @conversation.receiver : @conversation.sender %>
-      <div class="mt-4 text-center">
-        <%= image_tag other_user.avatar.attached? ? other_user.avatar : "default_profile_pic.jpg", class: "w-20 h-20 rounded-full mx-auto border" %>
-
-        <h3 class="text-lg font-medium mt-2"><%= other_user.name %></h3>
-        <p class="text-sm text-gray-500"><%= other_user.email %></p>
-      </div>
+       <%= render partial: "contact_profile", locals: {other_user: other_user, contact: contact}%>
     <% else %>
       <p class="text-gray-400 mt-4">No user selected</p>
     <% end %>

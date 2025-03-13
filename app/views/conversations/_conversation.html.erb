@@ -7,7 +7,7 @@
     <%= image_tag other_user.avatar.attached? ? other_user.avatar : "default_profile_pic.jpg", class: "w-10 h-10 rounded-full border" %>
     
     <div class="flex-grow">
-      <h3 class="text-md font-medium"><%= contact&.name || other_user.name %></h3>
+      <h3 class="text-md font-medium"><%= contact&.name || other_user.phone_number %></h3>
       <p class="text-sm text-gray-700 truncate">
         <%= conversation.messages.last&.content&.truncate(20) || "No messages yet" %>
       </p>
