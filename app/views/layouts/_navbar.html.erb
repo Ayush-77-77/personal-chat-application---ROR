@@ -22,7 +22,7 @@
       <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
         <%= link_to "Add Contact", new_contact_path, class: "block px-5 py-3 text-gray-700 hover:bg-gray-100 transition" %>
         <%= link_to "All Contacts", contacts_path, class: "block px-5 py-3 text-gray-700 hover:bg-gray-100 transition" %>
-        <%= link_to "Profile", "user_path(current_user)", class: "block px-5 py-3 text-gray-700 hover:bg-gray-100 transition" %>
+        <%= link_to "Profile", user_path(current_user), class: "block px-5 py-3 text-gray-700 hover:bg-gray-100 transition" %>
         <%= link_to "Edit Profile", edit_user_registration_path, class: "block px-5 py-3 text-gray-700 hover:bg-gray-100 transition" %>
         <div class="border-t"></div>
         <%= button_to "Logout", destroy_user_session_path, method: :delete, 

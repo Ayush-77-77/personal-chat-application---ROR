@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-
+  resources :users, only: [ :show ]
   authenticated :user do
     root to: "conversations#index", as: :authenticated_root
   end
