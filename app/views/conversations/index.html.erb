@@ -29,11 +29,17 @@
         <% other_user = @conversation.sender == current_user ? @conversation.receiver : @conversation.sender %>
         <% contact = current_user.contacts.find_by(phone_number: other_user.phone_number) %>
 
-      <div class="p-4 border-b flex items-center space-x-3">
+     <div class="p-4 border-b flex items-center space-x-3">
         <%= image_tag other_user.avatar.attached? ? other_user.avatar : "default_profile_pic.jpg", class: "w-10 h-10 rounded-full border" %>
-        <h2 class="text-lg font-semibold">
-          <%= contact&.name || other_user.phone_number %>
-        </h2>
+        
+        <div>
+          <h2 class="text-lg font-semibold leading-tight">
+            <%= contact&.name || other_user.phone_number %>
+          </h2>
+          <p class="text-sm text-gray-500">
+            <%= other_user.status %>
+          </p>
+        </div>
       </div>
 
       <div class="flex-1 p-4 overflow-y-auto space-y-3" data-controller="chat-subscription" data-chat-subscription-chat-id-value="<%= @conversation.id %>" 
