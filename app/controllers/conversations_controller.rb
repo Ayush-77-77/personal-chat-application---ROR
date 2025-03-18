@@ -12,7 +12,7 @@ class ConversationsController < ApplicationController
       @conversations = Conversation.where(sender: current_user).or(Conversation.where(receiver: current_user)).includes(:messages)
     end
 
-    @conversation = @conversations.order(updated_at: :desc).first
+    @conversation = @conversations.first
     @messages = @conversation ? @conversation.messages : []
   end
 
