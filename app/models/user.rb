@@ -10,4 +10,7 @@ class User < ApplicationRecord
   has_many :received_messages, class_name: "Conversation", foreign_key: "receiver_id"
 
   has_one_attached :avatar
+
+
+  enum :status, [ :offline, :online ], default: 0
 end
