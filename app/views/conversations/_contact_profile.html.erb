@@ -1,7 +1,19 @@
 <div class="mt-4 text-center">
-        <%= image_tag other_user.avatar.attached? ? other_user.avatar : "default_profile_pic.jpg", class: "w-20 h-20 rounded-full mx-auto border" %>
+  <div class="relative inline-block">
+    <%= image_tag other_user.avatar.attached? ? other_user.avatar : "default_profile_pic.jpg", 
+      class: "w-24 h-24 rounded-full mx-auto border-4 border-gray-300 shadow-md" %>
+  </div>
 
-        <h3 class="text-lg font-medium mt-2"><%= contact&.name || other_user.name %></h3>
-        <p class="text-sm text-gray-500"><%= other_user.phone_number %></p>
-      </div>
-   
+  <h3 class="text-xl font-semibold mt-3 text-gray-800"><%= contact&.name || other_user.name %></h3>
+
+  <p class="text-sm text-gray-500"><%= other_user.phone_number %></p>
+
+  <% if other_user.bio.present? %>
+    <div class="mt-4 bg-gray-100 p-4 rounded-lg shadow-md w-4/5 mx-auto border border-gray-300">
+      <p class="text-sm text-gray-700"><%= other_user.bio %></p>
+      <p class="text-xs text-black-100 mt-2 ">
+        Last updated: <%= other_user.updated_at.strftime("%b %d, %Y") %>
+      </p>
+    </div>
+  <% end %>
+</div>

@@ -65,7 +65,6 @@ data-chat-subscription-current-user-id-value="<%= current_user.id %>" data-targe
   </div>
 
   <div class="w-1/4 bg-purple p-4 shadow-lg flex flex-col">
-    <h2 class="text-lg font-semibold">User Info</h2>
     <% if @conversation %>
        <%= render partial: "contact_profile", locals: {other_user: other_user, contact: contact}%>
     <% else %>
