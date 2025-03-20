@@ -34,13 +34,13 @@
           <h2 class="text-lg font-semibold leading-tight text-black">
             <%= contact&.name || other_user.phone_number %>
           </h2>
-          <p class="text-xs <%= other_user.online? ? 'text-green-400' : 'text-gray-600' %>">
+          <p class="text-xs font-medium <%= other_user.online? ? 'text-green-500 ' : 'text-gray-600' %>">
               <% if other_user.online? %>
                 Online
               <% else %>
                 <% last_seen_time = other_user.last_seen %>
-                <span >Last seen at</span>
-                <%= last_seen_time.today? ? last_seen_time.strftime("%I:%M %p") : last_seen_time.strftime("%d/%m/%Y at %I:%M %p") %>
+                <span >Last seen </span>
+                <%= last_seen_time.today? ? "today at " + last_seen_time.strftime("%I:%M %p") : last_seen_time.strftime("%d/%m/%Y at %I:%M %p") %>
               <% end %>
           </p>
         </div>
