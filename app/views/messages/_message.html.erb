@@ -5,18 +5,25 @@
     <div class="text-xs flex items-center space-x-1 text-gray-400 mt-1">
       <%= message.created_at.strftime("%I:%M %p") %>
 
-      <% if message.user == current_user %>
-        <% if @conversation.receiver_seen && message.updated_at <= @conversation.receiver_seen %>
-          <svg class="w-4 h-4 text-blue-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10l4 4 8-8" />
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 10l4 4 8-8" />
-          </svg>
-        <% else %>
-          <svg class="w-4 h-4 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10l4 4 8-8" />
-          </svg>
-        <% end %>
+     <% if message.user == current_user %>
+      <% if @conversation.receiver_id == current_user.id %>
+        <% seen_time = @conversation&.sender_seen %>
+      <% else %>
+        <% seen_time = @conversation&.receiver_seen %>
       <% end %>
+
+      <% if seen_time && message.updated_at <= seen_time %>
+        <svg class="w-4 h-4 text-blue-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10l4 4 8-8" />
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 10l4 4 8-8" />
+        </svg>
+      <% else %>
+        <svg class="w-4 h-4 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10l4 4 8-8" />
+        </svg>
+      <% end %>
+    <% end %>
+
     </div>
 
   </div>
