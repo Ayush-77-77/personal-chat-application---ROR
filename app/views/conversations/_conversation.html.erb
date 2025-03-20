@@ -17,7 +17,22 @@
     </p>
   </div>
 
-  <span class="text-xs text-black-400">
-    <%= time_ago_in_words(conversation.messages.last&.created_at) if conversation.messages.last %>
-  </span>
+  <div class="flex flex-col items-end">
+      <% if conversation.messages.last %>
+        <% last_message_time = conversation.messages.last.created_at %>
+        <span class="text-xs text-gray-400">
+          <%= last_message_time.today? ? last_message_time.strftime("%I:%M %p") : last_message_time.strftime("%d/%m/%Y") %>
+          <%# https://apidock.com/ruby/DateTime/strftime %>
+        </span>
+      <% end %>
+  <% 
+    unseen_count = conversation.sender == current_user ? conversation.messages.count { |msg| msg.user_id == other_user.id && conversation.sender_seen < msg.updated_at } :
+      conversation.messages.count { |msg| msg.user_id == conversation.sender_id && conversation.receiver_seen < msg.updated_at }
+  %>
+    <% if unseen_count.positive? %>
+      <span class="bg-red-500 text-white text-xs font-bold w-5 h-5 flex items-center justify-center rounded-full">
+        <%= unseen_count %>
+      </span>
+    <% end %>
+  </div>
 </a>
