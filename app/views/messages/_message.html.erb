@@ -1,6 +1,23 @@
+<div class="mb-3 flex <%= message.user == current_user ? 'justify-end' : 'justify-start' %>">
+  <div class="p-3 rounded-lg inline-block max-w-xs <%= message.user == current_user ? 'bg-purple-700 text-white' : 'bg-gray-200 text-black' %> break-words overflow-hidden">
+    <%= message.content %>
+    
+    <div class="text-xs flex items-center space-x-1 text-gray-400 mt-1">
+      <%= message.created_at.strftime("%I:%M %p") %>
 
- <div class="mb-3 flex <%= message.user == current_user ? 'justify-end' : 'justify-start' %>">
-            <div class="p-3 rounded-lg inline-block max-w-xs <%= message.user == current_user ? 'bg-purple-700 text-white' : 'bg-gray-200 text-black' %> break-words overflow-hidden">
-              <%= message.content %>
-            </div>
- </div> 
+      <% if message.user == current_user %>
+        <% if @conversation.receiver_seen && message.updated_at <= @conversation.receiver_seen %>
+          <svg class="w-4 h-4 text-blue-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10l4 4 8-8" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 10l4 4 8-8" />
+          </svg>
+        <% else %>
+          <svg class="w-4 h-4 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10l4 4 8-8" />
+          </svg>
+        <% end %>
+      <% end %>
+    </div>
+
+  </div>
+</div>
