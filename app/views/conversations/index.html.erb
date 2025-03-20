@@ -29,14 +29,19 @@
         <% contact = current_user.contacts.find_by(phone_number: other_user.phone_number) %>
 
      <div class="p-4 border-b flex items-center space-x-3">
-        <%= image_tag other_user.avatar.attached? ? other_user.avatar : "default_profile_pic.jpg", class: "w-10 h-10 rounded-full border" %>
-        
-        <div>
-          <h2 class="text-lg font-semibold leading-tight">
+          <%= image_tag other_user.avatar.attached? ? other_user.avatar : "default_profile_pic.jpg", class: "w-10 h-10 rounded-full border" %>
+       <div>
+          <h2 class="text-lg font-semibold leading-tight text-black">
             <%= contact&.name || other_user.phone_number %>
           </h2>
-          <p class="text-sm text-gray-500">
-            <%= other_user.status %>
+          <p class="text-xs <%= other_user.online? ? 'text-green-400' : 'text-gray-600' %>">
+              <% if other_user.online? %>
+                Online
+              <% else %>
+                <% last_seen_time = other_user.last_seen %>
+                <span >Last seen at</span>
+                <%= last_seen_time.today? ? last_seen_time.strftime("%I:%M %p") : last_seen_time.strftime("%d/%m/%Y at %I:%M %p") %>
+              <% end %>
           </p>
         </div>
       </div>

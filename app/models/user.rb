@@ -12,5 +12,5 @@ class User < ApplicationRecord
   has_one_attached :avatar
 
 
-  enum :status, [ :offline, :online ], default: 0
+  enum :status, [ :offline, :online ], default: 1
 end

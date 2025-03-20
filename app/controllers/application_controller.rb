@@ -14,10 +14,10 @@ class ApplicationController < ActionController::Base
   # https://stackoverflow.com/questions/6738966/how-do-i-update-a-user-attribute-after-signing-in-and-signing-out-with-devise-ge
 
   Warden::Manager.after_authentication do |user, auth, opts|
-    user.update_attribute(:status, :online)
+    user.online!
   end
 
   Warden::Manager.before_logout do |user, auth, opts|
-    user.update_attribute(:status, :offline)
+    user.update(status: :offline, last_seen: Time.current)
   end
 end
