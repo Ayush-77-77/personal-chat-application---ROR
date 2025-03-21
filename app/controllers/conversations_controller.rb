@@ -11,7 +11,7 @@ class ConversationsController < ApplicationController
       @conversations = Conversation.where(sender: current_user).or(Conversation.where(receiver: current_user)).includes(:messages)
     end
 
-    @conversation = @conversations.first
+    # @conversation = @conversations.first
     @messages = @conversation ? @conversation.messages : []
   end
 
